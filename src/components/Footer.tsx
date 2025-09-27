@@ -1,18 +1,18 @@
 import { useLanguage } from '../contexts/LanguageContext'
 
 const Footer = () => {
-  const { t } = useLanguage()
+  const { t, language } = useLanguage()
   
   return (
     <footer className="parfumerie-bg border-t border-gray-200">
       <div className="max-w-7xl mx-auto py-12 px-4">
         {/* Top Footer */}
         <div className="flex flex-col md:flex-row justify-between items-center mb-8">
-          <div className="text-center md:text-left mb-6 md:mb-0">
+          <div className={`text-center mb-6 md:mb-0 ${language === 'ar' ? 'md:text-right' : 'md:text-left'}`}>
             <h3 className="text-3xl font-bold parfumerie-text mb-2">{t('footer.company')}</h3>
             <p className="text-gray-600">{t('footer.description')}</p>
           </div>
-          <div className="text-center md:text-right">
+          <div className={`text-center ${language === 'ar' ? 'md:text-left' : 'md:text-right'}`}>
             <p className="parfumerie-text mb-4">Monday to Friday 9am to 6pm</p>
             <button 
               className="orange-button"
@@ -27,14 +27,14 @@ const Footer = () => {
         <div className="border-t border-gray-200 pt-8">
           <div className="flex flex-col md:flex-row justify-between items-center">
             {/* Website Services Note */}
-            <div className="text-center md:text-left mb-4 md:mb-0">
+            <div className={`text-center mb-4 md:mb-0 ${language === 'ar' ? 'md:text-right' : 'md:text-left'}`}>
               <p className="text-xs text-gray-500">
                 Website by <a href="https://www.sitedz.store" target="_blank" rel="noopener noreferrer" className="text-orange-500 hover:text-orange-600 transition-colors">www.sitedz.store</a>
               </p>
             </div>
             
             {/* Social Media Links */}
-            <div className="flex space-x-4">
+            <div className={`flex ${language === 'ar' ? 'space-x-reverse space-x-4' : 'space-x-4'}`}>
               {/* Facebook */}
               <a 
                 href="https://www.facebook.com/Parfumerie.Allouani" 

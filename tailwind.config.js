@@ -14,6 +14,14 @@ export default {
       },
       backgroundImage: {
         'gradient-hive': 'linear-gradient(to bottom right, #0f172a, #1e3a8a, #0f172a)', // slate-900, blue-900, slate-900
+      },
+      fontFamily: {
+        'arabic': ['Cairo', 'Amiri', 'Noto Sans Arabic', 'Tajawal', 'system-ui', 'sans-serif'],
+        'sans': ['Inter', 'system-ui', 'sans-serif'],
+      },
+      direction: {
+        'rtl': 'rtl',
+        'ltr': 'ltr',
       }
     },
   },

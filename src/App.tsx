@@ -11,7 +11,30 @@ import Footer from './components/Footer'
 import FacebookPixelTracker from './components/FacebookPixelTracker'
 import PixelInitializer from './components/PixelInitializer'
 import { SpeedInsights } from '@vercel/speed-insights/react'
-import { LanguageProvider } from './contexts/LanguageContext'
+import { LanguageProvider, useLanguage } from './contexts/LanguageContext'
+
+function AppContent() {
+  const { language } = useLanguage()
+  
+  return (
+    <div 
+      className="min-h-screen bg-white"
+      dir={language === 'ar' ? 'rtl' : 'ltr'}
+    >
+      <Navbar />
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/services" element={<Services />} />
+        <Route path="/product-gros" element={<ProductGros />} />
+        <Route path="/contact" element={<ContactPage />} />
+        <Route path="/ecommerce-template" element={<EcommerceTemplate />} />
+        <Route path="/template/:id" element={<ProductDetail />} />
+      </Routes>
+      <Footer />
+      <SpeedInsights />
+    </div>
+  )
+}
 
 function App() {
   return (
@@ -21,19 +44,7 @@ function App() {
         <FacebookPixelTracker />
         {/* <PixelDebugger /> */}
         {/* <FacebookPixelTest /> */}
-        <div className="min-h-screen bg-white">
-          <Navbar />
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/services" element={<Services />} />
-            <Route path="/product-gros" element={<ProductGros />} />
-            <Route path="/contact" element={<ContactPage />} />
-            <Route path="/ecommerce-template" element={<EcommerceTemplate />} />
-            <Route path="/template/:id" element={<ProductDetail />} />
-          </Routes>
-          <Footer />
-          <SpeedInsights />
-        </div>
+        <AppContent />
       </Router>
     </LanguageProvider>
   )

@@ -3,7 +3,7 @@ import { useLanguage } from '../contexts/LanguageContext'
 
 const Hero = () => {
   const backgroundImagePath = "/pics/templates/background image.jpg"
-  const { t } = useLanguage()
+  const { t, language } = useLanguage()
   
   const typewriterWords = [
     t('hero.typewriter.premium'),
@@ -56,7 +56,7 @@ const Hero = () => {
           </p>
 
           {/* Enhanced CTA Buttons */}
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+          <div className={`flex flex-col sm:flex-row gap-4 justify-center ${language === 'ar' ? 'sm:flex-row-reverse' : ''}`}>
             <button 
               className="text-white px-10 py-4 rounded-xl font-semibold text-lg transition-all duration-300 shadow-2xl hover:shadow-3xl transform hover:-translate-y-1 border border-[#03045e]/30 mobile-button"
               style={{

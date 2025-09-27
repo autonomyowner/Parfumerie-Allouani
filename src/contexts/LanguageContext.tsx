@@ -1,6 +1,6 @@
 import React, { createContext, useContext, useState, type ReactNode } from 'react'
 
-type Language = 'en' | 'fr'
+type Language = 'ar' | 'en' | 'fr'
 
 interface LanguageContextType {
   language: Language
@@ -23,9 +23,119 @@ interface LanguageProviderProps {
 }
 
 export const LanguageProvider: React.FC<LanguageProviderProps> = ({ children }) => {
-  const [language, setLanguage] = useState<Language>('en')
+  const [language, setLanguage] = useState<Language>('ar')
 
   const translations = {
+    ar: {
+      // Navigation
+      'nav.home': 'الرئيسية',
+      'nav.perfumes': 'العطور',
+      'nav.productGros': 'المنتجات بالجملة',
+      'nav.contact': 'اتصل بنا',
+      'nav.shopNow': 'تسوق الآن',
+      
+      // Hero Section
+      'hero.badge': '✨ محل علواني لبيع العطور - رحلة ساحرة من العبق والأناقة',
+      'hero.title': 'رحلتك العطرية تبدأ هنا',
+      'hero.typewriter.premium': 'عالم سحري',
+      'hero.typewriter.luxury': 'روائح فريدة',
+      'hero.typewriter.exotic': 'عطور راقية',
+      'hero.typewriter.designer': 'خلطات مميزة',
+      'hero.typewriter.signature': 'مسك وعود',
+      'hero.subtitle': 'محل علواني لبيع العطور هو واحد من أروع المحلات التي تأخذك في رحلة ساحرة من العبق والأناقة. إنه عالم سحري ينبض بالنسائم والروائح الفريدة، حيث يمكنك استكشاف مجموعة واسعة من الروائح الفخمة والعطور الراقية.',
+      'hero.shopPerfumes': 'استكشف العطور',
+      'hero.viewCollections': 'اكتشف المجموعات',
+      
+      // About Section
+      'about.title': 'فريق متفانٍ من الخبراء والعارفين',
+      'about.description': 'ستجد عندنا فريق متفانٍ من الخبراء والعارفين في عالم العطور، يساعدونك بكل احترافية وودٍّ على اختيار العطر المثالي الذي يناسب شخصيتك ويعكس أناقتك الفريدة. ستكون تجربة اختيار العطر المناسب تجربة ممتعة ومثيرة للاهتمام.',
+      'about.shopButton': 'اكتشف تجربتنا',
+      
+      // Services/Collections Section
+      'services.title': 'مجموعاتنا المتميزة',
+      'services.subtitle': 'ستبهرك روعة التصاميم وجودة المنتجات التي تقدمها هذه الواحة العطرية. بالإضافة إلى مجموعة العطور المتميزة، خلطات، مسك، عود.',
+      'services.qualityBadge': '✨ جودة أصيلة وفاخرة مضمونة: منتجات أصلية فقط مع استشارة عطرية متخصصة',
+      'services.luxuryPerfumes.title': 'عطور فاخرة',
+      'services.luxuryPerfumes.description': 'مجموعة واسعة من الروائح الفخمة والعطور الراقية التي تقدمها هذه الواحة العطرية. ستجد عندنا أفضل العطور من الماركات العالمية.',
+      'services.nicheFragrances.title': 'خلطات مميزة',
+      'services.nicheFragrances.description': 'خلطات عطرية فريدة ومميزة، مسك وعود أصيلة من أفضل المصادر. عطور حصرية للعملاء المميزين الذين يقدرون الجودة والتميز.',
+      'services.signatureCollections.title': 'مسك وعود',
+      'services.signatureCollections.description': 'مجموعة منتقاة بعناية من المسك والعود الأصيل. من العطور الدافئة إلى العطور المنعشة، لدينا العطر المثالي لكل مناسبة.',
+      'services.shopNow': 'تسوق الآن',
+      'services.showcase.badge': '✨ عرض المجموعة الفاخرة',
+      'services.showcase.title': 'اكتشف مجموعتنا من العطور الفاخرة',
+      'services.showcase.description': 'استمتع بأجمل مجموعة من العطور الفاخرة من الماركات المعروفة عالمياً. كل عطر منتقى بعناية لتقديم تجربة عطرية فاخرة مثالية.',
+      'services.showcase.shopNow': 'تسوق الآن',
+      
+      // Popular Section
+      'popular.title': 'أشهر عطورنا',
+      'popular.mobileHint': 'اسحب يساراً أو يميناً للتصفح • اضغط واسحب للتمرير',
+      'popular.discount': 'خصم {discount}%',
+      
+      // Contact Section
+      'contact.title': 'تجربة استثنائية لن تنساها',
+      'contact.description': 'في ختام الزيارة، ستغادر المحل بابتسامة عريضة على وجهك وقلب ممتن مليء بالسعادة لاكتشافك الجوهر الفريد للجمال والرقي في هذا العالم المثير للحواس. فلا شك أن زيارة محلنا للعطور ستكون تجربة استثنائية لن تنساها أبداً.',
+      'contact.shopNow': 'زرنا الآن',
+      
+      // Contact Page
+      'contactPage.badge': '✨ عطور فاخرة ومستحضرات عطرية راقية',
+      'contactPage.title': 'اتصل بعطور علواني',
+      'contactPage.subtitle': 'مستعد لاكتشاف عطرك التوقيعي المثالي؟ تواصل معنا لاستكشاف مجموعتنا الفاخرة من العطور الراقية. نحن هنا لمساعدتك في العثور على العطر المثالي الذي يطابق شخصيتك وأسلوبك.',
+      'contactPage.form.badge': '🛒 نموذج طلب سريع',
+      'contactPage.form.title': 'اطلب عطرك',
+      'contactPage.form.subtitle': 'أدخل تفاصيلك، اختر ولايتك، وشاهد سعر التوصيل فوراً.',
+      'contactPage.form.firstName': 'الاسم الأول',
+      'contactPage.form.firstNamePlaceholder': 'أدخل اسمك الأول',
+      'contactPage.form.lastName': 'اسم العائلة',
+      'contactPage.form.lastNamePlaceholder': 'أدخل اسم عائلتك',
+      'contactPage.form.phone': 'رقم الهاتف',
+      'contactPage.form.phonePlaceholder': '+213 559 94 82 46',
+      'contactPage.form.product': 'المنتج',
+      'contactPage.form.productPlaceholder': 'اسم المنتج أو الرابط',
+      'contactPage.form.quantity': 'الكمية',
+      'contactPage.form.searchWilaya': 'البحث عن الولاية',
+      'contactPage.form.searchWilayaPlaceholder': 'اكتب اسم الولاية...',
+      'contactPage.form.chooseWilaya': 'اختر ولايتك',
+      'contactPage.form.chooseWilayaPlaceholder': 'اختر ولايتك',
+      'contactPage.form.deliveryPrice': 'سعر التوصيل: {price}',
+      'contactPage.form.deliveryTime': 'وقت التوصيل المتوقع: {time}',
+      'contactPage.form.placeOrder': '🛒 تقديم الطلب',
+      'contactPage.form.sendingOrder': '⏳ جاري إرسال طلبك...',
+      'contactPage.form.success.title': 'تم إرسال الرسالة بنجاح!',
+      'contactPage.form.success.message': 'سنتواصل معك خلال 24 ساعة.',
+      'contactPage.form.error.title': 'فشل في إرسال الرسالة',
+      'contactPage.form.error.message': 'يرجى المحاولة مرة أخرى أو الاتصال بنا مباشرة.',
+      'contactPage.whyChoose.title': 'لماذا تختار عطور علواني؟',
+      'contactPage.whyChoose.expert': 'استشاريو عطور خبراء مع سنوات من الخبرة',
+      'contactPage.whyChoose.authentic': 'عطور فاخرة أصيلة من أفضل الماركات',
+      'contactPage.whyChoose.personal': 'مطابقة عطور شخصية واستشارة',
+      'contactPage.whyChoose.delivery': 'توصيل على مستوى البلاد مع العناية والخبرة',
+      'contactPage.cta.title': 'مستعد للعثور على عطرك التوقيعي؟',
+      'contactPage.cta.description': 'لست متأكداً من العطر المناسب لك؟ احصل على استشارة عطرية مجانية لمدة 30 دقيقة — بدون التزام.',
+      'contactPage.cta.bookConsultation': '🌸 احجز استشارة عطرية مجانية',
+      'contactPage.cta.viewPerfumes': '🌸 عرض العطور',
+      'contactPage.cta.support': 'عطور فاخرة تُسلم على مستوى البلاد · دعم واتساب 24/7',
+      
+      // Product Gros Section
+      'productGros.badge': '🏪 منتجات عطور بالجملة',
+      'productGros.title': 'المنتجات بالجملة - تجزئة',
+      'productGros.subtitle': 'اكتشف مجموعاتنا الحصرية من العطور بالجملة المصممة للتجار والمتاجر وأصحاب الأعمال. احصل على أسعار جملة تنافسية ومنتجات أصيلة ودعم تجاري شامل.',
+      'productGros.benefitsBadge': '🏢 فوائد الجملة: أسعار جملة • دعم تجاري • توصيل سريع',
+      'productGros.contactWholesale': 'اتصل للجملة',
+      'productGros.cta.badge': '🏢 ابدأ عملك التجاري للعطور اليوم',
+      'productGros.cta.title': 'مستعد لبدء عملك التجاري للعطور؟',
+      'productGros.cta.description': 'انضم إلى مئات التجار الناجحين الذين يثقون بنا لاحتياجاتهم من العطور بالجملة. ابدأ بأسعار تنافسية ومنتجات أصيلة ودعم تجاري شامل.',
+      'productGros.cta.getPricing': 'احصل على أسعار الجملة',
+      'productGros.cta.callNow': 'اتصل الآن: +213 671 38 91 13',
+      
+      // Footer
+      'footer.company': 'عطور علواني',
+      'footer.description': 'شريكك الموثوق للعطور الفاخرة والمستحضرات العطرية الراقية في الجزائر.',
+      'footer.quickLinks': 'روابط سريعة',
+      'footer.contact': 'اتصل بنا',
+      'footer.followUs': 'تابعنا',
+      'footer.rights': '© 2024 عطور علواني. جميع الحقوق محفوظة.',
+    },
     en: {
       // Navigation
       'nav.home': 'Home',
@@ -35,32 +145,32 @@ export const LanguageProvider: React.FC<LanguageProviderProps> = ({ children }) 
       'nav.shopNow': 'SHOP NOW',
       
       // Hero Section
-      'hero.badge': '✨ Premium Perfumes & Fragrances in Algeria',
-      'hero.title': 'Discover',
-      'hero.typewriter.premium': 'Premium Perfumes',
-      'hero.typewriter.luxury': 'Luxury Fragrances',
-      'hero.typewriter.exotic': 'Exotic Scents',
-      'hero.typewriter.designer': 'Designer Brands',
-      'hero.typewriter.signature': 'Signature Collections',
-      'hero.subtitle': 'Specialized in premium perfumes and luxury fragrances for discerning customers in Algeria. We bring you the finest scents from around the world to enhance your personal style.',
-      'hero.shopPerfumes': 'Shop Perfumes',
-      'hero.viewCollections': 'View Collections',
+      'hero.badge': '✨ Allouani Perfume Store - A Magical Journey of Fragrance & Elegance',
+      'hero.title': 'Your Fragrant Journey Begins Here',
+      'hero.typewriter.premium': 'Magical World',
+      'hero.typewriter.luxury': 'Unique Scents',
+      'hero.typewriter.exotic': 'Luxury Perfumes',
+      'hero.typewriter.designer': 'Special Blends',
+      'hero.typewriter.signature': 'Musk & Oud',
+      'hero.subtitle': 'Allouani Perfume Store is one of the most wonderful stores that takes you on a magical journey of fragrance and elegance. It is a magical world that pulses with breezes and unique scents, where you can explore a wide range of luxurious and refined fragrances.',
+      'hero.shopPerfumes': 'Explore Perfumes',
+      'hero.viewCollections': 'Discover Collections',
       
       // About Section
-      'about.title': 'Luxury fragrances meet authentic craftsmanship',
-      'about.description': 'We specialize in curating premium perfumes and luxury fragrances for discerning customers in Algeria. Our collection combines authentic brands with expert knowledge to deliver scents that enhance your personal style, create lasting impressions, and reflect your unique personality.',
-      'about.shopButton': 'SHOP PERFUMES',
+      'about.title': 'Dedicated Team of Experts and Connoisseurs',
+      'about.description': 'You will find with us a dedicated team of experts and connoisseurs in the world of perfumes, who help you with all professionalism and kindness to choose the perfect fragrance that suits your personality and reflects your unique elegance. Choosing the right fragrance will be a fun and exciting experience.',
+      'about.shopButton': 'Discover Our Experience',
       
       // Services/Collections Section
-      'services.title': 'Our Collections',
-      'services.subtitle': 'We are passionate about bringing you the finest fragrances from around the world, carefully curated for the discerning Algerian customer!',
+      'services.title': 'Our Distinguished Collections',
+      'services.subtitle': 'You will be amazed by the magnificence of designs and quality of products offered by this fragrant oasis. In addition to the distinguished collection of perfumes, blends, musk, and oud.',
       'services.qualityBadge': '✨ Authentic & Premium Quality Guaranteed: Only Original Products with Expert Fragrance Advice',
       'services.luxuryPerfumes.title': 'Luxury Perfumes',
-      'services.luxuryPerfumes.description': 'Premium designer fragrances from top brands like Tom Ford, Armani, and Dior. Authentic products with guaranteed quality and elegant presentation.',
-      'services.nicheFragrances.title': 'Niche Fragrances',
-      'services.nicheFragrances.description': 'Exclusive and rare perfumes from artisanal houses like Initio, Xerjoff, and Maison Francis Kurkdjian. Unique scents for discerning customers.',
-      'services.signatureCollections.title': 'Signature Collections',
-      'services.signatureCollections.description': 'Curated collections of seasonal and themed fragrances. From warm winter scents to fresh summer perfumes, we have the perfect scent for every occasion.',
+      'services.luxuryPerfumes.description': 'A wide range of luxurious and refined fragrances offered by this fragrant oasis. You will find with us the best perfumes from international brands.',
+      'services.nicheFragrances.title': 'Special Blends',
+      'services.nicheFragrances.description': 'Unique and distinctive aromatic blends, authentic musk and oud from the best sources. Exclusive fragrances for discerning customers who appreciate quality and excellence.',
+      'services.signatureCollections.title': 'Musk & Oud',
+      'services.signatureCollections.description': 'A carefully selected collection of authentic musk and oud. From warm fragrances to refreshing scents, we have the perfect fragrance for every occasion.',
       'services.shopNow': 'Shop Now',
       'services.showcase.badge': '✨ Premium Collection Showcase',
       'services.showcase.title': 'Discover Our Luxury Fragrance Collection',
@@ -73,9 +183,9 @@ export const LanguageProvider: React.FC<LanguageProviderProps> = ({ children }) 
       'popular.discount': 'خصم {discount}%',
       
       // Contact Section
-      'contact.title': 'Lets Chat',
-      'contact.description': 'Ready to discover your perfect signature scent? We\'d love to help you find the ideal fragrance that matches your personality and style. Get in touch with us today and let\'s explore the world of luxury perfumes together.',
-      'contact.shopNow': 'SHOP NOW',
+      'contact.title': 'An Exceptional Experience You Will Never Forget',
+      'contact.description': 'At the end of your visit, you will leave the store with a wide smile on your face and a grateful heart full of happiness for discovering the unique essence of beauty and elegance in this world that excites the senses. There is no doubt that visiting our perfume store will be an exceptional experience you will never forget.',
+      'contact.shopNow': 'Visit Us Now',
       
       // Contact Page
       'contactPage.badge': '✨ Premium Perfumes & Luxury Fragrances',
@@ -145,32 +255,32 @@ export const LanguageProvider: React.FC<LanguageProviderProps> = ({ children }) 
       'nav.shopNow': 'ACHETER MAINTENANT',
       
       // Hero Section
-      'hero.badge': '✨ Parfums Premium & Fragrances en Algérie',
-      'hero.title': 'Découvrez',
-      'hero.typewriter.premium': 'Parfums Premium',
-      'hero.typewriter.luxury': 'Fragrances de Luxe',
-      'hero.typewriter.exotic': 'Parfums Exotiques',
-      'hero.typewriter.designer': 'Marques de Créateurs',
-      'hero.typewriter.signature': 'Collections Signature',
-      'hero.subtitle': 'Spécialisés dans les parfums premium et les fragrances de luxe pour une clientèle exigeante en Algérie. Nous vous apportons les plus beaux parfums du monde pour sublimer votre style personnel.',
-      'hero.shopPerfumes': 'Acheter des Parfums',
-      'hero.viewCollections': 'Voir les Collections',
+      'hero.badge': '✨ Magasin de Parfums Allouani - Un Voyage Magique de Parfum et d\'Élégance',
+      'hero.title': 'Votre Voyage Parfumé Commence Ici',
+      'hero.typewriter.premium': 'Monde Magique',
+      'hero.typewriter.luxury': 'Parfums Uniques',
+      'hero.typewriter.exotic': 'Parfums de Luxe',
+      'hero.typewriter.designer': 'Mélanges Spéciaux',
+      'hero.typewriter.signature': 'Musc et Oud',
+      'hero.subtitle': 'Le magasin de parfums Allouani est l\'un des plus merveilleux magasins qui vous emmène dans un voyage magique de parfum et d\'élégance. C\'est un monde magique qui pulse avec les brises et les parfums uniques, où vous pouvez explorer une large gamme de fragrances luxueuses et raffinées.',
+      'hero.shopPerfumes': 'Explorer les Parfums',
+      'hero.viewCollections': 'Découvrir les Collections',
       
       // About Section
-      'about.title': 'Les fragrances de luxe rencontrent l\'artisanat authentique',
-      'about.description': 'Nous nous spécialisons dans la curation de parfums premium et de fragrances de luxe pour une clientèle exigeante en Algérie. Notre collection combine des marques authentiques avec une expertise pour livrer des parfums qui subliment votre style personnel, créent des impressions durables et reflètent votre personnalité unique.',
-      'about.shopButton': 'ACHETER DES PARFUMS',
+      'about.title': 'Équipe Dévouée d\'Experts et de Connaisseurs',
+      'about.description': 'Vous trouverez chez nous une équipe dévouée d\'experts et de connaisseurs dans le monde des parfums, qui vous aident avec tout le professionnalisme et la gentillesse à choisir le parfum parfait qui convient à votre personnalité et reflète votre élégance unique. Choisir le bon parfum sera une expérience amusante et passionnante.',
+      'about.shopButton': 'Découvrir Notre Expérience',
       
       // Services/Collections Section
-      'services.title': 'Nos Collections',
-      'services.subtitle': 'Nous sommes passionnés par l\'apport des plus belles fragrances du monde, soigneusement sélectionnées pour la clientèle algérienne exigeante !',
+      'services.title': 'Nos Collections Distinguées',
+      'services.subtitle': 'Vous serez émerveillé par la magnificence des designs et la qualité des produits offerts par cette oasis parfumée. En plus de la collection distinguée de parfums, mélanges, musc et oud.',
       'services.qualityBadge': '✨ Qualité Authentique & Premium Garantie : Seulement des Produits Originaux avec Conseil Expert en Parfums',
       'services.luxuryPerfumes.title': 'Parfums de Luxe',
-      'services.luxuryPerfumes.description': 'Fragrances de créateurs premium des meilleures marques comme Tom Ford, Armani et Dior. Produits authentiques avec qualité garantie et présentation élégante.',
-      'services.nicheFragrances.title': 'Fragrances de Niche',
-      'services.nicheFragrances.description': 'Parfums exclusifs et rares de maisons artisanales comme Initio, Xerjoff et Maison Francis Kurkdjian. Parfums uniques pour une clientèle exigeante.',
-      'services.signatureCollections.title': 'Collections Signature',
-      'services.signatureCollections.description': 'Collections soigneusement sélectionnées de fragrances saisonnières et thématiques. Des parfums chauds d\'hiver aux parfums frais d\'été, nous avons le parfum parfait pour chaque occasion.',
+      'services.luxuryPerfumes.description': 'Une large gamme de fragrances luxueuses et raffinées offertes par cette oasis parfumée. Vous trouverez chez nous les meilleurs parfums des marques internationales.',
+      'services.nicheFragrances.title': 'Mélanges Spéciaux',
+      'services.nicheFragrances.description': 'Mélanges aromatiques uniques et distinctifs, musc et oud authentiques des meilleures sources. Parfums exclusifs pour une clientèle exigeante qui apprécie la qualité et l\'excellence.',
+      'services.signatureCollections.title': 'Musc et Oud',
+      'services.signatureCollections.description': 'Une collection soigneusement sélectionnée de musc et oud authentiques. Des parfums chauds aux senteurs rafraîchissantes, nous avons le parfum parfait pour chaque occasion.',
       'services.shopNow': 'Acheter Maintenant',
       'services.showcase.badge': '✨ Vitrine de Collection Premium',
       'services.showcase.title': 'Découvrez Notre Collection de Fragrances de Luxe',
@@ -183,9 +293,9 @@ export const LanguageProvider: React.FC<LanguageProviderProps> = ({ children }) 
       'popular.discount': 'Remise {discount}%',
       
       // Contact Section
-      'contact.title': 'Discutons',
-      'contact.description': 'Prêt à découvrir votre parfum signature parfait ? Nous aimerions vous aider à trouver la fragrance idéale qui correspond à votre personnalité et votre style. Contactez-nous dès aujourd\'hui et explorons ensemble le monde des parfums de luxe.',
-      'contact.shopNow': 'ACHETER MAINTENANT',
+      'contact.title': 'Une Expérience Exceptionnelle Que Vous N\'Oublierez Jamais',
+      'contact.description': 'À la fin de votre visite, vous quitterez le magasin avec un large sourire sur votre visage et un cœur reconnaissant plein de bonheur pour avoir découvert l\'essence unique de la beauté et de l\'élégance dans ce monde qui excite les sens. Il ne fait aucun doute que visiter notre magasin de parfums sera une expérience exceptionnelle que vous n\'oublierez jamais.',
+      'contact.shopNow': 'Visitez-Nous Maintenant',
       
       // Contact Page
       'contactPage.badge': '✨ Parfums Premium & Fragrances de Luxe',
